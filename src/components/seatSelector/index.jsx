@@ -1,15 +1,8 @@
-import { useState } from 'react';
+import { useContext } from "react";
+import eventContext from "../../context/eventContext";
 
-function SeatSelector({ eventData }) {
-  const [seats, setSeats] = useState(eventData.seats);
-
-  const toggleSeat = (id) => {
-    setSeats((prev) =>
-      prev.map((seat) => (seat.id === id ? { ...seat, isSelected: !seat.isSelected } : seat)),
-    );
-  };
-
-  const selectedSeats = seats.filter((seat) => seat.isSelected).map((seat) => seat.id);
+function SeatSelector() {
+  const { seats, toggleSeat, selectedSeats } = useContext(eventContext);
 
   return (
     <div>

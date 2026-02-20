@@ -1,12 +1,18 @@
-function EventDetails({ eventData }) {
+import eventData from '../../data/eventData';
+
+function EventDetails() {
   return (
     <div>
       {eventData.map((item) => {
         return (
           <div key={item.id}>
-            <h1 style={{ fontSize: '56px' }}>{item.title}</h1>
-            <h2>{item.date}</h2>
-            <h2>{item.location}</h2>
+            {item.events.map((event) => {
+              return (
+                <div key={event.id}>
+                  <h2>{event.location}</h2>
+                </div>
+              );
+            })}
           </div>
         );
       })}
