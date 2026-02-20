@@ -1,8 +1,10 @@
-import { useContext } from "react";
-import eventContext from "../../context/eventContext";
+import { useContext } from 'react';
+import eventContext from '../../context/eventContext';
 
 function SeatSelector() {
-  const { seats, toggleSeat, selectedSeats } = useContext(eventContext);
+  const { selectedEvent, toggleSeat } = useContext(eventContext);
+
+  const seats = selectedEvent?.seats || [];
 
   return (
     <div>
@@ -19,8 +21,6 @@ function SeatSelector() {
           {seat.label}
         </button>
       ))}
-
-      <h2>Selected seats: {selectedSeats.length === 0 ? 0 : selectedSeats.join(', ')}</h2>
     </div>
   );
 }
